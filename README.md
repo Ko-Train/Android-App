@@ -1,4 +1,4 @@
 Android-App
 ===========
 
-An Android wrapper for the mobile site
+An Android wrapper for the mobile site.
