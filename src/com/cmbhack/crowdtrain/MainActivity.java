@@ -36,6 +36,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -89,7 +90,7 @@ public class MainActivity extends Activity {
 			mContainerFragment = new ContainerFragment();
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, mContainerFragment).commit();
-			mContainerFragment.setUrl("http://ko-train.meteor.com");
+			mContainerFragment.setUrl("https://ko-train.meteor.com");
 		}
 		gcm = GoogleCloudMessaging.getInstance(this);
 		regid = getRegistrationId(context);
@@ -161,7 +162,9 @@ public class MainActivity extends Activity {
 					false);
 			mMainWV = (WebView) rootView.findViewById(R.id.MainWV);
 			mMainWV.setWebViewClient(new WebViewClient());
-			mMainWV.getSettings().setJavaScriptEnabled(true);
+			WebSettings settings = mMainWV.getSettings();
+			settings.setJavaScriptEnabled(true);
+			settings.setDomStorageEnabled(true);
 			mMainWV.loadUrl(mUrl);
 			return rootView;
 		}
